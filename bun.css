@@ -1,0 +1,7 @@
+.slight-left {
+    margin-left: 290px;   /* ← ここを調整して「少し左に寄せる」 */
+}
+
+body {
+    padding-bottom: 100px;   /* ← 好きな値に調整できる */
+}
