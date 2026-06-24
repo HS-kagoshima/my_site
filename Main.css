@@ -92,7 +92,7 @@
 
 .photo {
     display: block;      /* ← 画像をブロック扱いにする */
-    margin: 0 auto;   /* ← 必要なら上下も調整 */
+    margin: 20px auto;   /* ← 必要なら上下も調整 */
     background-size: cover;        /* ← サイズ調整（任意） */
 }
 
