@@ -41,10 +41,11 @@ body {
         rgb(215, 210, 252),
         violet);
     -webkit-background-clip: text;
-    background-clip: text;          /* ← これ追加 */
-    color: transparent;             /* ← これ追加（Chrome/Edge用） */
-    -webkit-text-fill-color: transparent; /* ← Safari用 */
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
 }
+
 
 
 
@@ -58,10 +59,16 @@ body {
 
     /* タイトルだけスマホ用に調整 */
     .main-title {
-        font-size: 28px;   /* ← 32px → 28px にすると2行に収まりやすい */
+        font-size: 28px;
         line-height: 1.2;
         padding: 0 5px;
         word-break: keep-all;
+
+        /* ← ここが重要！ */
+        background-clip: text;
+        -webkit-background-clip: text;   /* ← これが抜けてた！ */
+        color: transparent;
+        -webkit-text-fill-color: transparent;
     }
 
     /* 中央テキスト */
