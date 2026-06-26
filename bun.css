@@ -41,7 +41,9 @@ body {
         rgb(215, 210, 252),
         violet);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    background-clip: text;          /* ← これ追加 */
+    color: transparent;             /* ← これ追加（Chrome/Edge用） */
+    -webkit-text-fill-color: transparent; /* ← Safari用 */
 }
 
 
