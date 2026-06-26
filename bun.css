@@ -28,3 +28,55 @@ body {
   padding: 10px;
   margin: 10px;
 }
+
+
+@media screen and (max-width: 767px) {
+
+    /* body の左右余白をリセット */
+    .slight-left {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    /* タイトル文字を小さく */
+    h1, .main-title {
+        font-size: 32px !important;
+        line-height: 1.3;
+    }
+
+    /* 中央テキスト */
+    .middle {
+        font-size: 16px;
+        padding: 5px;
+        margin: 8px;
+    }
+
+    /* 見出し */
+    .above {
+        font-size: 22px;
+        padding: 5px 10px;
+    }
+
+    /* 画像は画面幅に合わせる */
+    .photo {
+        width: 100%;
+        margin: 10px auto;
+    }
+
+    /* QRコード画像 */
+    .photo_QR {
+        width: 40%;
+        margin: 10px auto;
+    }
+
+    /* スライドショーの枠 */
+    .img-frame {
+        width: 100%;
+        height: 180px;
+    }
+
+    /* 背景画像の位置をスマホ用に調整（ズレ防止） */
+    .img-01, .img-02, .img-03, .img-04, .img-05, .img-06 {
+        background-position: center;
+    }
+}
