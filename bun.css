@@ -1,7 +1,30 @@
 .slight-left {
-    margin-left: 290px;   /* ← ここを調整して「少し左に寄せる」 */
+    margin-left: 80px;
+    margin-right: 80px;   /* ← ここを調整して「少し左に寄せる」 */
 }
 
 body {
     padding-bottom: 100px;   /* ← 好きな値に調整できる */
+}
+
+.middle {
+  /*真ん中の要素*/
+  padding: 10px;
+  margin: 10px;
+  font-size: 20px;
+
+}
+.above {
+  background: skyblue;
+  font-size: 30px;
+  
+}
+.under {
+  background: silver;
+}
+
+.colorful {
+  color: red;
+  padding: 10px;
+  margin: 10px;
 }
