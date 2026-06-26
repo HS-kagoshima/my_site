@@ -29,19 +29,37 @@ body {
   margin: 10px;
 }
 
+.main-title {
+    text-align: center;
+    font-size: 50px;
+    background: linear-gradient(to right,
+        rgb(255, 189, 220),
+        rgb(255, 141, 217),
+        rgb(145, 255, 0),
+        rgb(217, 255, 2),
+        rgb(255, 0, 0),
+        rgb(215, 210, 252),
+        violet);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
 
 @media screen and (max-width: 767px) {
 
-    /* body の左右余白をリセット */
+    /* body の左右余白をさらに減らす */
     .slight-left {
-        margin-left: 10px;
-        margin-right: 10px;
+        margin-left: 5px;
+        margin-right: 5px;
     }
 
-    /* タイトル文字を小さく */
-    h1, .main-title {
-        font-size: 32px !important;
-        line-height: 1.3;
+    /* タイトルだけスマホ用に調整 */
+    .main-title {
+        font-size: 28px;   /* ← 32px → 28px にすると2行に収まりやすい */
+        line-height: 1.2;
+        padding: 0 5px;
+        word-break: keep-all;
     }
 
     /* 中央テキスト */
