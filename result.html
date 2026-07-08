@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="Main.css" />
+  <link rel="stylesheet" type="text/css" href="bun.css" />
+  <title>Answer Results</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Answer List (Auto-Update)</h1>
+  <div id="answers">Loading...</div>
+
+  <script>
+    const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQi5RN6oOY0cFh4cf_zVwv6FUFkMgZE9IBJlGi38JYXd1VmmpmvjWwG9tSJ-l1otj9v3VO7H074x-MF/pub?gid=465595631&single=true&output=csv";
+
+    async function loadResponses() {
+      const res = await fetch(CSV_URL);
+      const text = await res.text();
+
+      const lines = text.split("\n");
+      const headers = lines[0].split(",");
+      const rows = lines.slice(1);
+
+      let html = "<table><tr>";
+      headers.forEach(h => html += `<th>${h}</th>`);
+      html += "</tr>";
+
+      rows.forEach(row => {
+        if (!row.trim()) return;
+        const cols = row.split(",");
+        html += "<tr>";
+        cols.forEach(c => html += `<td>${c}</td>`);
+        html += "</tr>";
+      });
+
+      html += "</table>";
+      document.getElementById("answers").innerHTML = html;
+    }
+
+    loadResponses();
+    setInterval(loadResponses, 5000);
+  </script>
+</body>
+</html>
