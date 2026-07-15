@@ -21,7 +21,7 @@
 
       const lines = text.split("\n");
       const headers = lines[0].split(",");
-      const rows = lines.slice(2);
+      const rows = lines.slice(3);
 
       let html = "<table><tr>";
       headers.forEach(h => html += `<th>${h}</th>`);
