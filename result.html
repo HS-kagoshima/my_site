@@ -11,11 +11,22 @@
 <body>
   <h1>Answer List (Auto-Update)</h1>
   <div id="answers">Loading...</div>
+  <div id="images"></div>
 
   <script>
     const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQi5RN6oOY0cFh4cf_zVwv6FUFkMgZE9IBJlGi38JYXd1VmmpmvjWwG9tSJ-l1otj9v3VO7H074x-MF/pub?gid=465595631&single=true&output=csv";
 
     const TARGET_VALUE = "A2";  // ← A1 の行だけ抽出する
+
+    // ▼ Google Drive の共有URL → 画像URLに変換する関数
+    function convertDriveURL(url) {
+      const match = url.match(/\/d\/([^\/]+)/);
+      if (match) {
+        const id = match[1];
+        return `https://drive.google.com/uc?export=view&id=${id}`;
+      }
+      return url;
+    }
 
     async function loadResponses() {
       const res = await fetch(CSV_URL);
@@ -50,8 +61,8 @@
     imgArea.innerHTML = ""; // 初期化
 
     filteredRows.forEach(cols => {
-      const url = cols[7]; // H列（0始まりなので7）
-
+      const rawUrl = cols[7]; // H列（0始まりなので7）
+      const url = convertDriveURL(rawUrl);
       if (url && url.startsWith("http")) {
         const img = document.createElement("img");
         img.src = url;
