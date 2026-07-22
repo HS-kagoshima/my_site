@@ -43,6 +43,23 @@
 
     html += "</table>";
     document.getElementById("answers").innerHTML = html;
+  
+
+  // ▼ 画像を表示（H列＝画像URL）
+    const imgArea = document.getElementById("images");
+    imgArea.innerHTML = ""; // 初期化
+
+    filteredRows.forEach(cols => {
+      const url = cols[7]; // H列（0始まりなので7）
+
+      if (url && url.startsWith("http")) {
+        const img = document.createElement("img");
+        img.src = url;
+        img.alt = "";
+        img.width = 300;
+        imgArea.appendChild(img);
+      }
+    });
   }
 
   loadResponses();
