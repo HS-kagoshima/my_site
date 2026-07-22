@@ -28,7 +28,7 @@
       // ▼ A列（cols[0]）が TARGET_VALUE と一致する行だけ抽出
       const filteredRows = rows
         .map(r => r.split(","))
-        .filter(cols => cols[0] === TARGET_VALUE);
+        .filter(cols => cols[1] === TARGET_VALUE);
 
         
       let html = "<table><tr>";
