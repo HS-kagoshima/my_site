@@ -15,6 +15,8 @@
   <script>
     const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQi5RN6oOY0cFh4cf_zVwv6FUFkMgZE9IBJlGi38JYXd1VmmpmvjWwG9tSJ-l1otj9v3VO7H074x-MF/pub?gid=465595631&single=true&output=csv";
 
+    const TARGET_VALUE = "A1";  // ← A1 の行だけ抽出する
+
     async function loadResponses() {
       const res = await fetch(CSV_URL);
       const text = await res.text();
@@ -22,25 +24,29 @@
       const lines = text.split("\n");
       const headers = lines[0].split(",");
       const rows = lines.slice(4);
+      
+      // ▼ A列（cols[0]）が TARGET_VALUE と一致する行だけ抽出
+      const filteredRows = rows
+        .map(r => r.split(","))
+        .filter(cols => cols[0] === TARGET_VALUE);
 
+        
       let html = "<table><tr>";
       headers.forEach(h => html += `<th>${h}</th>`);
       html += "</tr>";
 
-      rows.forEach(row => {
-        if (!row.trim()) return;
-        const cols = row.split(",");
-        html += "<tr>";
-        cols.forEach(c => html += `<td>${c}</td>`);
-        html += "</tr>";
-      });
+       filteredRows.forEach(cols => {
+      html += "<tr>";
+      cols.forEach(c => html += `<td>${c}</td>`);
+      html += "</tr>";
+    });
 
-      html += "</table>";
-      document.getElementById("answers").innerHTML = html;
-    }
+    html += "</table>";
+    document.getElementById("answers").innerHTML = html;
+  }
 
-    loadResponses();
-    setInterval(loadResponses, 5000);
+  loadResponses();
+  setInterval(loadResponses, 5000);
   </script>
 </body>
 </html>
